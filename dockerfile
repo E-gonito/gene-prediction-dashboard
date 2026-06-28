@@ -4,4 +4,4 @@ WORKDIR /app
 RUN corepack enable
 EXPOSE 3000
 # Bind dev server to 0.0.0.0 so the host can reach it
-CMD ["pnpm", "dev", "--", "-H", "0.0.0.0"]
+CMD ["sh", "-c", "pnpm install && pnpm dev"]
