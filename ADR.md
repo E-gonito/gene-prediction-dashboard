@@ -12,8 +12,5 @@ SSR is faster on slow hospital WiFi, as there is less round trips needed for the
 2) Browser paints data on first response
 
 ## GenePrediction: type vs interface
-Data object is flat, but we need to alise unions for the modality so type is used for this project. (Interfaces are extendable via declaration merging and conventionally used for object/contract shapes; type aliases handle unions, intersections, and primitives that interfaces can't.)
-
-
-
+Data is object/contract shape, which is the conventional use for interface  (Interfaces are extendable via declaration merging and conventionally used for object/contract shapes; type aliases handle unions, intersections, and primitives that interfaces can't.)
 
