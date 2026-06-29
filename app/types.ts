@@ -1,1 +1,1 @@
-type GenePrediction = { gene: string; confidence: number; modality: string }
+export type GenePrediction = { gene: string; confidence: number; modality: string }
