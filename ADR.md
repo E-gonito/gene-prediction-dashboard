@@ -1,15 +1,11 @@
 # Architecture Decision Record
 
 ## Data fetch location: Server sided
-SSR is faster on slow hospital WiFi, as there is less round trips needed for the first paint.
-### CSR
-1) Client requests page, gets HTML shell and JS to execute
-2) Browser parses, downloads and executes the JS
-3) Then useEffect fires the fetch for the data source
-4) Await response -> re-render -> paint data
-### SSR
-1) Client requests page, server fetches data, populates HTML with data and serves it to client
-2) Browser paints data on first response
+The page is a Server Component that fetches data during the server render. Interactivity (sort) is isolated to a Client Component marked 'use client'. The reason for server-side fetch is faster first paint on a constrained network. The reason the sort is a Client Component is that event handlers and state only exist in the browser.
+
+With a server component, the fetch happens on the server, which lives cloer to the data source. The HTML to the client arrives populated so no need to wait for a fetch for the data to re-render.
+
+Client Component fetching with useEffect was rejected due to there being more steps before the final HTML is shown (HTML shell from server, execute JS, then a fetch for the data to populate thr shell, then a re-render, slower first paint)
 
 ## GenePrediction: type vs interface
 Data is object/contract shape, which is the conventional use for interface  (Interfaces are extendable via declaration merging and conventionally used for object/contract shapes; type aliases handle unions, intersections, and primitives that interfaces can't.)
