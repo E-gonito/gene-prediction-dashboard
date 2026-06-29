@@ -1,0 +1,1 @@
+type GenePrediction = { gene: string; confidence: number; modality: string }
